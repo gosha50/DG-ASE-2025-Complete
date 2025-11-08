@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+<title>ASE 2025 Diastolic Function Calculator</title>
+<meta name="theme-color" content="#0b1020">
+</head>
+<body>
+<header>
+  <h1>ASE 2025 Diastolic Function Calculator</h1>
+  <small>Paste an echo report anywhere on this page — we’ll auto-fill what we can. Build 2025-11-08.</small>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Patient & Rhythm</h2>
+    <div class="grid">
+      <div class="field">
+        <label>Age (years)</label>
+        <input type="number" min="0" step="1" placeholder="e.g. 67" data-field="Age_years">
+      </div>
+      <div class="field">
+        <label>Rhythm</label>
+        <select data-field="Rhythm">
+          <option value="">—</option>
+          <option>Sinus</option>
+          <option>AF</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>LARS vendor (display only)</label>
+        <select data-field="LARS_vendor">
+          <option>TomTec</option>
+          <option>EchoPAC</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Transmitral inflow</h2>
+    <div class="grid">
+      <div class="field"><label>E velocity (m/s)</label><input inputmode="decimal" placeholder="0.92" data-field="MV_E_m_s"></div>
+      <div class="field"><label>A velocity (m/s)</label><input inputmode="decimal" placeholder="0.64" data-field="MV_A_m_s"></div>
+      <div class="field"><label>E/A (auto)</label><input inputmode="decimal" placeholder="auto" data-field="EA_ratio" readonly></div>
+      <div class="field"><label>Deceleration time, DT (ms)</label><input inputmode="numeric" placeholder="190" data-field="DT_ms"></div>
+      <div class="field"><label>IVRT (ms)</label><input inputmode="numeric" placeholder="96" data-field="IVRT_ms"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Mitral annular e' (TDI)</h2>
+    <div class="grid">
+      <div class="field"><label>Septal e' (cm/s)</label><input inputmode="decimal" placeholder="6.8" data-field="eprime_septal_cm_s"></div>
+      <div class="field"><label>Lateral e' (cm/s)</label><input inputmode="decimal" placeholder="8.2" data-field="eprime_lateral_cm_s"></div>
+      <div class="field"><label>Avg e' (auto)</label><input inputmode="decimal" placeholder="auto" data-field="eprime_avg_cm_s" readonly></div>
+      <div class="field"><label>E/e' (septal)</label><input inputmode="decimal" placeholder="auto" data-field="E_over_eprime_septal" readonly></div>
+      <div class="field"><label>E/e' (lateral)</label><input inputmode="decimal" placeholder="auto" data-field="E_over_eprime_lateral" readonly></div>
+      <div class="field"><label>E/e' (average)</label><input inputmode="decimal" placeholder="auto" data-field="E_over_eprime_avg" readonly></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Secondary variables</h2>
+    <div class="grid">
+      <div class="field"><label>TR Vmax (m/s)</label><input inputmode="decimal" placeholder="2.7" data-field="TR_Vmax_m_s"></div>
+      <div class="field"><label>PASP (mmHg)</label><input inputmode="numeric" placeholder="auto or 34" data-field="PASP_mmHg"></div>
+      <div class="field"><label>RA pressure (mmHg)</label><input inputmode="numeric" placeholder="RAP e.g. 8" data-field="RA_pressure_mmHg"></div>
+      <div class="field"><label>LAVi (mL/m²)</label><input inputmode="decimal" placeholder="39" data-field="LAVI_ml_m2"></div>
+      <div class="field"><label>LA volume (mL)</label><input inputmode="decimal" placeholder="72" data-field="LA_volume_ml"></div>
+      <div class="field"><label>BSA (m²)</label><input inputmode="decimal" placeholder="1.85" data-field="BSA_m2"></div>
+      <div class="field"><label>PV S/D ratio</label><input inputmode="decimal" placeholder="1.3" data-field="PV_SD_ratio"></div>
+      <div class="field"><label>LARS (%)</label><input inputmode="decimal" placeholder="18" data-field="LA_reservoir_strain_pct"></div>
+      <div class="field"><label>LV GLS (%)</label><input inputmode="decimal" placeholder="-18" data-field="LV_GLS_pct"></div>
+      <div class="field"><label>LA stiffness index</label><input inputmode="decimal" placeholder="auto" data-field="LA_stiffness_index" readonly></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Exercise (optional)</h2>
+    <div class="grid">
+      <div class="field"><label>Exercise E/e' (avg)</label><input inputmode="decimal" placeholder="" data-field="E_over_eprime_avg_exercise"></div>
+      <div class="field"><label>Exercise TR Vmax (m/s)</label><input inputmode="decimal" placeholder="" data-field="TR_Vmax_exercise_m_s"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Vitals</h2>
+    <div class="grid">
+      <div class="field"><label>Heart rate (bpm)</label><input inputmode="numeric" placeholder="72" data-field="HR_bpm"></div>
+      <div class="field"><label>BP systolic (mmHg)</label><input inputmode="numeric" placeholder="128" data-field="BP_sys"></div>
+      <div class="field"><label>BP diastolic (mmHg)</label><input inputmode="numeric" placeholder="74" data-field="BP_dia"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Result (placeholder)</h2>
+    <div class="grid">
+      <div class="field">
+        <label>Grade / Interpretation</label>
+        <input placeholder="—" readonly data-field="Result_grade">
+      </div>
+      <div class="field">
+        <label>Confidence</label>
+        <input placeholder="—" readonly data-field="Result_confidence">
+      </div>
+    </div>
+    <small>Note: This sample UI shows fields only. The official algorithm logic can be integrated next; paste injector is fully wired.</small>
+  </div>
+
+</div>
+
+<footer>© 2025 — ASE 2025 DF helper</footer>
+
+<script src="diastolic-bulk-paste-2025-anywhere.js"></script>
+<script>
+  // Build mapping automatically using the data-field attributes.
+  const KEYS = [
+    "MV_E_m_s","MV_A_m_s","EA_ratio","DT_ms",
+    "eprime_septal_cm_s","eprime_lateral_cm_s","eprime_avg_cm_s",
+    "E_over_eprime_septal","E_over_eprime_lateral","E_over_eprime_avg",
+    "TR_Vmax_m_s","LAVI_ml_m2","LA_volume_ml","BSA_m2",
+    "HR_bpm","BP_sys","BP_dia","Rhythm",
+    "LA_reservoir_strain_pct","PV_SD_ratio","IVRT_ms",
+    "PASP_mmHg","RA_pressure_mmHg","LV_GLS_pct","LA_stiffness_index",
+    "E_over_eprime_avg_exercise","TR_Vmax_exercise_m_s"
+  ];
+  const mapping = Object.fromEntries(KEYS.map(k => [k, `[data-field="${k}"]`]));
+
+  // init paste-anywhere
+  DiastolicPaste.setup(mapping, {
+    scope: 'anywhere',
+    trigger: 'auto',
+    onlyWhenMultiLine: true,
+    signalsMin: 2,
+    onAfterFill: (bag, updated) => {
+      // simple local derivations for display convenience
+      const val = (k) => (k in bag ? bag[k] : null);
+      // E/A
+      const ea = val('EA_ratio');
+      if (ea != null) document.querySelector('[data-field="EA_ratio"]').value = ea;
+      // e' avg
+      const eavg = val('eprime_avg_cm_s');
+      if (eavg != null) document.querySelector('[data-field="eprime_avg_cm_s"]').value = eavg;
+      // E/e' family
+      ['E_over_eprime_septal','E_over_eprime_lateral','E_over_eprime_avg'].forEach(k => {
+        const v = val(k);
+        if (v != null) document.querySelector(`[data-field="${k}"]`).value = v;
+      });
+      // LA stiffness
+      const las = val('LA_stiffness_index');
+      if (las != null) document.querySelector('[data-field="LA_stiffness_index"]').value = las;
+    }
+  });
+
+  // PWA
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('service-worker.js'));
+  }
+</script>
+</body>
+</html>
